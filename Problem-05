@@ -1,0 +1,18 @@
+5. Demonstrate Interface: Create an interface Flyable and a class Bird that implements it.
+
+interface Flyable {
+    void fly();
+}
+
+class Bird implements Flyable {
+    public void fly() {
+        System.out.println("The bird is flying.");
+    }
+}
+
+class TestFlyable {
+    public static void main(String[] args) {
+        Bird bird = new Bird();
+        bird.fly();
+    }
+}
