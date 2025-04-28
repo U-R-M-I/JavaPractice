@@ -1,0 +1,83 @@
+Write a program to test your class. Use floating-point variables to represent the private data of the
+class. Provide a constructor that enables an object of this class to be initialized when it’s declared.
+Provide a no-argument constructor with default values in case no initializers are provided. Provide
+public methods that perform the following operations:
+a) Add two Complex numbers: The real parts are added together and the imaginary parts
+are added together.
+b) Subtract two Complex numbers: The real part of the right operand is subtracted from
+
+the real part of the left operand, and the imaginary part of the right operand is sub-
+tracted from the imaginary part of the left operand.
+
+c) Print Complex numbers in the form (realPart, imageinaryPart).
+
+//Complex.java
+
+public class Complex {
+    private float realPart;
+    private float imaginaryPart;
+
+    // Default constructor: sets real and imaginary parts to 0
+    public Complex() {
+        this.realPart = 0.0f;
+        this.imaginaryPart = 0.0f;
+    }
+
+    // Parameterized constructor
+    public Complex(float realPart, float imaginaryPart) {
+        this.realPart = realPart;
+        this.imaginaryPart = imaginaryPart;
+    }
+
+    // Method to add two Complex numbers
+    public Complex add(Complex other) {
+        float newReal = this.realPart + other.realPart;
+        float newImaginary = this.imaginaryPart + other.imaginaryPart;
+        return new Complex(newReal, newImaginary);
+    }
+
+    // Method to subtract two Complex numbers
+    public Complex subtract(Complex other) {
+        float newReal = this.realPart - other.realPart;
+        float newImaginary = this.imaginaryPart - other.imaginaryPart;
+        return new Complex(newReal, newImaginary);
+    }
+
+    // Method to print Complex number
+    public void printComplex() {
+        System.out.printf("(%.2f, %.2f)%n", realPart, imaginaryPart);
+    }
+}
+
+
+//TestComplex.java
+
+public class TestComplex {
+    public static void main(String[] args) {
+        // Create complex numbers using parameterized constructor
+        Complex num1 = new Complex(3.5f, 2.5f);
+        Complex num2 = new Complex(1.5f, 4.5f);
+
+        // Display original numbers
+        System.out.print("First Complex Number: ");
+        num1.printComplex();
+        System.out.print("Second Complex Number: ");
+        num2.printComplex();
+
+        // Add the two complex numbers
+        Complex sum = num1.add(num2);
+        System.out.print("\nSum: ");
+        sum.printComplex();
+
+        // Subtract the two complex numbers
+        Complex difference = num1.subtract(num2);
+        System.out.print("Difference: ");
+        difference.printComplex();
+
+        // Create a complex number with no-arg constructor (default 0+0i)
+        Complex defaultComplex = new Complex();
+        System.out.print("\nDefault Complex Number: ");
+        defaultComplex.printComplex();
+    }
+}
+
